@@ -3,6 +3,8 @@ local M = {
 		padding = {
 			width = 30,
 		},
+		on_open = nil,
+		on_close = nil,
 	},
 }
 

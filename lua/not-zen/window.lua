@@ -7,8 +7,8 @@ local M = {
 	win = {},
 }
 
-local resize_pads = function(config)
-	config = config or require("not-zen.config").init()
+local resize_pads = function()
+	local config = require("not-zen.config").init()
 	api.nvim_win_set_width(M.win.left, config.padding.width)
 	api.nvim_win_set_width(M.win.right, config.padding.width)
 end

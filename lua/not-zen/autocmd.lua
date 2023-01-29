@@ -2,7 +2,7 @@ local M = {}
 
 local augroup = require("not-zen.utils").create_augroup
 local autocmd = vim.api.nvim_create_autocmd
-local not_zen_augroup_name = "NotZen"
+local not_zen_augroup_name = "NotZenAugroup"
 
 M.not_zen_augroup = augroup(not_zen_augroup_name)
 
