@@ -14,7 +14,7 @@ M.quit_autocmd = function()
 	autocmd({ "QuitPre" }, {
 		group = M.not_zen_augroup,
 		callback = function()
-			require("not-zen").not_zen()
+			require("not-zen").off()
 		end,
 	})
 end
