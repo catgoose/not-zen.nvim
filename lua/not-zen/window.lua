@@ -21,7 +21,7 @@ local new_pads = function(new_cmd, direction)
 	return win_id
 end
 
-M.open_windows = function()
+M.create_layout = function()
 	if fn.filereadable(fn.expand("%:p")) ~= 1 or g.not_zen == true then
 		return
 	end

@@ -1,17 +1,23 @@
+local g = vim.g
+
 local M = {}
 
-M.on_open = function()
-	local config = require("not-zen.config").config()
-	if type(config.on_open) == "function" then
-		config.on_open()
+local do_call = function(call)
+	if g.not_zen_callback[call] == true then
+		local config = require("not-zen.config").config()
+		if type(config[call]) == "function" then
+			config[call]()
+		end
 	end
+	g.not_zen_callback[call] = nil
+end
+
+M.on_open = function()
+	do_call("on_open")
 end
 
 M.on_close = function()
-	local config = require("not-zen.config").config()
-	if type(config.on_open) == "function" then
-		config.on_close()
-	end
+	do_call("on_close")
 end
 
 return M
