@@ -23,19 +23,20 @@ M.off = function()
 	g.not_zen = nil
 end
 
-local on = function()
+M.on = function()
+	if g.not_zen == true then
+		return
+	end
 	call.on_open()
 	win.open_windows()
 	g.not_zen = true
 end
 
---  TODO: 2023-01-29 - figure out how to pass in configuration to toggle
---  function
 M.toggle = function()
 	if g.not_zen == true then
 		cmd.q()
 	else
-		on()
+		M.on()
 	end
 end
 
