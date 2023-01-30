@@ -3,6 +3,9 @@ local o = require("not-zen.options")
 local hl = require("not-zen.highlight")
 local ac = require("not-zen.autocmd")
 
+--  TODO: 2023-01-30 - Create no-zen filetype/highlight groups to use to
+--  customize window highlights for pads
+
 local M = {}
 local win = {}
 
@@ -35,7 +38,7 @@ M.create_layout = function()
 	cmd.tabe("%")
 	o.set_options()
 	fn.setpos(".", cur_pos)
-	hl.winhighlight()
+	hl.main_win()
 	win.main = api.nvim_get_current_win()
 	win.left = new_pads("leftabove vnew", "l")
 	win.right = new_pads("vnew", "h")

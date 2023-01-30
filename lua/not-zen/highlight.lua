@@ -1,8 +1,8 @@
 local M = {}
 
-M.winhighlight = function()
+M.main_win = function()
 	local config = require("not-zen.config").config()
-	vim.wo.winhighlight = config.winhighlight
+	vim.wo.winhighlight = config.winhighlight.main
 end
 
 return M
