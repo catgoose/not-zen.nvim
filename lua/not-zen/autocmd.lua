@@ -8,6 +8,9 @@ M.create_augroup = function()
 	M.not_zen_augroup = augroup(not_zen_augroup_name)
 end
 
+--  TODO: 2023-01-30 - create autocmd to return to win.main when pads are
+--  selected.  It can match pattern by custom filetype
+
 M.quit_autocmd = function()
 	autocmd({ "QuitPre" }, {
 		group = M.not_zen_augroup,

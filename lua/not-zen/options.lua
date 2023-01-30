@@ -1,5 +1,4 @@
 local o, opt_local, cmd = vim.o, vim.opt_local, vim.cmd
-local ac = require("not-zen.autocmd")
 local M = {}
 
 local saved_options = {}
@@ -34,8 +33,6 @@ local save_options = function()
 end
 
 M.restore_options = function()
-	ac.create_augroup()
-	cmd.only()
 	o.fillchars = saved_options.fillchars
 	opt_local.laststatus = saved_options.laststatus
 	opt_local.cmdheight = saved_options.cmdheight

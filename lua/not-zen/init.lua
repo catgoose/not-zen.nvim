@@ -1,4 +1,4 @@
-local cmd, g = vim.cmd, vim.g
+local cmd, g, api, fn = vim.cmd, vim.g, vim.api, vim.fn
 local o, ac, win, call, cnf =
 	require("not-zen.options"),
 	require("not-zen.autocmd"),
@@ -18,8 +18,16 @@ M.close = function()
 	if g.not_zen == nil then
 		return
 	end
-	call.on_close()
+	local cur_pos = fn.getpos(".")
+	local buf_id = vim.api.nvim_get_current_buf()
+	cmd.only()
+	vim.schedule(function()
+		api.nvim_win_set_buf(0, buf_id)
+		fn.setpos(".", cur_pos)
+	end)
+	ac.create_augroup()
 	o.restore_options()
+	call.on_close()
 	g.not_zen = nil
 end
 
@@ -27,8 +35,8 @@ M.open = function()
 	if g.not_zen == true then
 		return
 	end
-	call.on_open()
 	win.create_layout()
+	call.on_open()
 	g.not_zen = true
 end
 
