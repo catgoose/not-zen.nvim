@@ -1,7 +1,8 @@
 local M = {
 	opts = {
 		padding = {
-			width = 30,
+			width = 25,
+			use_percent = true,
 		},
 		on_open = nil,
 		on_close = nil,

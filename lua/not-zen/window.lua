@@ -3,14 +3,19 @@ local o = require("not-zen.options")
 local hl = require("not-zen.highlight")
 local ac = require("not-zen.autocmd")
 
-local M = {
-	win = {},
-}
+local M = {}
+local win = {}
 
 local resize_pads = function()
 	local config = require("not-zen.config").init()
-	api.nvim_win_set_width(M.win.left, config.padding.width)
-	api.nvim_win_set_width(M.win.right, config.padding.width)
+	local width
+	if config.padding.use_percent then
+		width = math.floor(vim.o.columns * config.padding.width / 100)
+	else
+		width = config.padding.width
+	end
+	api.nvim_win_set_width(win.left, width)
+	api.nvim_win_set_width(win.right, width)
 end
 
 local new_pads = function(new_cmd, direction)
@@ -31,9 +36,9 @@ M.create_layout = function()
 	o.set_options()
 	fn.setpos(".", cur_pos)
 	hl.winhighlight()
-	M.win.main = api.nvim_get_current_win()
-	M.win.left = new_pads("leftabove vnew", "l")
-	M.win.right = new_pads("vnew", "h")
+	win.main = api.nvim_get_current_win()
+	win.left = new_pads("leftabove vnew", "l")
+	win.right = new_pads("vnew", "h")
 	resize_pads()
 end
 
