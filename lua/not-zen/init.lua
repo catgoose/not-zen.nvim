@@ -14,28 +14,37 @@ M.setup = function(config)
 	ac.create_augroup()
 end
 
-M.off = function()
+M.close = function()
 	if g.not_zen == nil then
 		return
 	end
 	call.on_close()
-	o.load_options()
+	o.restore_options()
 	g.not_zen = nil
 end
 
-local on = function()
+M.open = function()
+	if g.not_zen == true then
+		return
+	end
 	call.on_open()
-	win.open_windows()
+	win.create_layout()
 	g.not_zen = true
 end
 
---  TODO: 2023-01-29 - figure out how to pass in configuration to toggle
---  function
-M.toggle = function()
+M.toggle = function(config)
+	config = config or {}
+	config = vim.tbl_deep_extend("keep", config, {
+		callback = {
+			on_open = true,
+			on_close = true,
+		},
+	})
+	g.not_zen_callback = config.callback
 	if g.not_zen == true then
 		cmd.q()
 	else
-		on()
+		M.open()
 	end
 end
 
