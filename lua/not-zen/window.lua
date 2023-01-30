@@ -6,7 +6,7 @@ local ac = require("not-zen.autocmd")
 --  TODO: 2023-01-30 - Create no-zen filetype/highlight groups to use to
 --  customize window highlights for pads
 
-local M = { win = {}, buf = {} }
+local M = { state = {} }
 
 local resize_pads = function()
 	local config = require("not-zen.config").init()
@@ -16,8 +16,8 @@ local resize_pads = function()
 	else
 		width = config.padding.width
 	end
-	api.nvim_win_set_width(M.win.left, width)
-	api.nvim_win_set_width(M.win.right, width)
+	api.nvim_win_set_width(M.state.left, width)
+	api.nvim_win_set_width(M.state.right, width)
 end
 
 local new_pads = function(new_cmd, direction)
@@ -32,16 +32,16 @@ M.create_layout = function()
 	if fn.filereadable(fn.expand("%:p")) ~= 1 or g.not_zen == true then
 		return
 	end
+	M.state.prev = api.nvim_get_current_win()
 	local cur_pos = fn.getpos(".")
 	ac.quit_autocmd()
 	cmd.tabe("%")
 	o.set_options()
 	fn.setpos(".", cur_pos)
 	hl.main_win()
-	M.win.main = api.nvim_get_current_win()
-	M.buf.main = api.nvim_get_current_buf()
-	M.win.left = new_pads("leftabove vnew", "l")
-	M.win.right = new_pads("vnew", "h")
+	M.state.main = api.nvim_get_current_win()
+	M.state.left = new_pads("leftabove vnew", "l")
+	M.state.right = new_pads("vnew", "h")
 	resize_pads()
 end
 
