@@ -17,13 +17,8 @@ M.close = function()
 	if g.not_zen == nil then
 		return
 	end
-	-- local cur_pos = fn.getpos(".")
 	local buf_id = vim.api.nvim_get_current_buf()
-	api.nvim_win_set_buf(w.state.prev, buf_id)
 	cmd.only()
-	-- vim.schedule(function()
-	-- 	fn.setpos(".", cur_pos)
-	-- end)
 	o.restore_options()
 	ac.create_augroup()
 	call.on_close()
