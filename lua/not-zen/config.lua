@@ -6,6 +6,7 @@ local M = {
 		},
 		on_open = nil,
 		on_close = nil,
+		winhighlight = "NormalNC:Normal,WinSeparator:Normal,WinBarNC:Normal,MsgArea:Normal",
 	},
 }
 
