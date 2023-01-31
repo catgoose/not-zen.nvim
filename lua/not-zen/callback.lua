@@ -4,7 +4,7 @@ local M = {}
 
 local do_call = function(call)
 	if g.not_zen_callback[call] == true then
-		local config = require("not-zen.config").config()
+		local config = require("not-zen.config").opts
 		if type(config[call]) == "function" then
 			config[call]()
 		end

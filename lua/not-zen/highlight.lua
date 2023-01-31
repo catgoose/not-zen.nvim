@@ -1,7 +1,7 @@
 local M = {}
 
 local get_cfg = function()
-	return require("not-zen.config").config()
+	return require("not-zen.config").opts
 end
 
 M.center_win = function()

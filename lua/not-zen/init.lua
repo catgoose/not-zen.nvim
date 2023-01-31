@@ -26,12 +26,13 @@ M.close = function()
 	if g.not_zen == nil then
 		return
 	end
-	local buf_id = vim.api.nvim_get_current_buf()
+	-- local buf_id = vim.api.nvim_get_current_buf()
 	cmd.only()
 	o.restore_options()
 	ac.create_augroup()
 	call.on_close()
 	g.not_zen = nil
+	print(vim.inspect(cnf.opts))
 end
 
 M.toggle = function(config)

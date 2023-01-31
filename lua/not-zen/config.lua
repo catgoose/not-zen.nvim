@@ -19,8 +19,4 @@ M.init = function(opts)
 	return M.opts
 end
 
-M.config = function()
-	return M.opts
-end
-
 return M
