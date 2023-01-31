@@ -3,9 +3,6 @@ local o = require("not-zen.options")
 local hl = require("not-zen.highlight")
 local ac = require("not-zen.autocmd")
 
---  TODO: 2023-01-30 - Create no-zen filetype/highlight groups to use to
---  customize window highlights for pads
-
 local M = {}
 local win_ids = {}
 
