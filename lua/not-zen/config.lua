@@ -7,8 +7,8 @@ local M = {
 		on_open = nil,
 		on_close = nil,
 		winhighlight = {
-			main = "NormalNC:Normal,WinSeparator:Normal,WinBarNC:Normal,MsgArea:Normal",
-			padding = "NormalNC:Normal,WinSeparator:Normal,WinBarNC:Normal,MsgArea:Normal",
+			main = "WinBar:Normal,NormalNC:Normal,WinBar:Normal,WinBarNC:Normal",
+			padding = "Normal:NormalNC,WinBar:NormalNC",
 		},
 	},
 }
