@@ -37,6 +37,7 @@ M.restore_options = function()
 	o.fillchars = saved_options.fillchars
 	opt_local.laststatus = saved_options.laststatus
 	opt_local.cmdheight = saved_options.cmdheight
+	vim.wo.winhighlight = ""
 end
 
 M.set_options = function()
