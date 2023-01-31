@@ -5,6 +5,7 @@ local saved_options = {}
 
 local pad_options = {
 	bo = {
+		filetype = "not-zen",
 		buftype = "nofile",
 		bufhidden = "hide",
 		modifiable = false,
