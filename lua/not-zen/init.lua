@@ -13,6 +13,15 @@ M.setup = function(config)
 	cnf.init(config)
 end
 
+M.open = function()
+	if g.not_zen == true then
+		return
+	end
+	w.create_layout()
+	call.on_open()
+	g.not_zen = true
+end
+
 M.close = function()
 	if g.not_zen == nil then
 		return
@@ -23,15 +32,6 @@ M.close = function()
 	ac.create_augroup()
 	call.on_close()
 	g.not_zen = nil
-end
-
-M.open = function()
-	if g.not_zen == true then
-		return
-	end
-	w.create_layout()
-	call.on_open()
-	g.not_zen = true
 end
 
 M.toggle = function(config)
