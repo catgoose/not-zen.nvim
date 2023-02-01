@@ -1,4 +1,4 @@
-local cmd, g, api, fn = vim.cmd, vim.g, vim.api, vim.fn
+local cmd, g = vim.cmd, vim.g
 local o, ac, w, call, cnf =
 	require("not-zen.options"),
 	require("not-zen.autocmd"),
