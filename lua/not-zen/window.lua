@@ -5,14 +5,17 @@ local ac = require("not-zen.autocmd")
 
 local M = { win_ids = {} }
 
+local get_width = function(config)
+	local width = config.padding.width
+	if config.padding.width > 0 and config.padding.width < 1 then
+		width = math.floor(vim.o.columns * config.padding.width)
+	end
+	return width
+end
+
 local resize_pads = function()
 	local config = require("not-zen.config").init()
-	local width
-	if config.padding.use_percent then
-		width = math.floor(vim.o.columns * config.padding.width / 100)
-	else
-		width = config.padding.width
-	end
+	local width = get_width(config)
 	api.nvim_win_set_width(M.win_ids.left, width)
 	api.nvim_win_set_width(M.win_ids.right, width)
 end
