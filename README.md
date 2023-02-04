@@ -1,5 +1,13 @@
 # not-zen.nvim
 
+`zen is not zen, it is only called that`
+
+## Zen
+
+![Screenshot](https://raw.githubusercontent.com/catgoose/not-zen.nvim/images/images/zen.png)
+
+## Not Zen
+
 ![Screenshot](https://raw.githubusercontent.com/catgoose/not-zen.nvim/images/images/not-zen.png)
 
 ## Setup
@@ -14,9 +22,9 @@ return {
             width = 0.25, -- 0 > width < 1 is interpreted as percent
             -- of screen width, otherwise in columns
         },
-        on_open = nil, -- on_open callback function() end
-        on_close = nil, -- on_close callback function() end
-        winhighlight = {
+        on_open = function() end, -- on_open callback
+        on_close = function() end, -- on_close callback
+        winhighlight = { -- highlights for main and padding
             main = "WinBar:Normal,NormalNC:Normal,WinBar:Normal,WinBarNC:Normal",
             padding = "Normal:NormalNC,WinBar:NormalNC",
         },
@@ -42,6 +50,12 @@ local opts = {
         end,
 }
 ```
+
+### globals
+
+`vim.g.not_zen`
+
+- use to disable statusbar/winbar in heirline, lualine, etc
 
 ### user commands
 

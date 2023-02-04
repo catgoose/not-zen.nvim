@@ -3,8 +3,8 @@ local M = {
 		padding = {
 			width = 0.25,
 		},
-		on_open = nil,
-		on_close = nil,
+		on_open = function() end,
+		on_close = function() end,
 		winhighlight = {
 			main = "WinBar:Normal,NormalNC:Normal,WinBar:Normal,WinBarNC:Normal",
 			padding = "Normal:NormalNC,WinBar:NormalNC",
