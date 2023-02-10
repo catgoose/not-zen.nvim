@@ -1,4 +1,4 @@
-local o, opt_local, cmd = vim.o, vim.opt_local, vim.cmd
+local o, opt_local = vim.o, vim.opt_local
 local M = {}
 
 local saved_options = {}
@@ -14,6 +14,7 @@ local pad_options = {
 	},
 	wo = {
 		number = false,
+		relativenumber = false,
 		cursorline = false,
 		list = false,
 	},
